@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { LuRefreshCw, LuEdit3, LuTrash2 } from "react-icons/lu"
+import { LuRefreshCw, LuTrash2 } from "react-icons/lu"
 import adminUsersService from "../../services/adminUsers"
 import commonStyles from "./common.module.css"
 import styles from "./users.module.css"
@@ -110,7 +110,7 @@ export default function AdminUsers() {
                                             handleSelectUser(user)
                                         }}
                                     >
-                                        <LuEdit3 />
+                                        Editar
                                     </button>
                                     <button
                                         className={`${commonStyles.iconButton} ${commonStyles.deleteButton}`}
@@ -173,7 +173,7 @@ export default function AdminUsers() {
                             />
                         </label>
                         <button type="submit">
-                            <LuEdit3 /> Atualizar usuário
+                            Atualizar usuário
                         </button>
                     </form>
                 ) : (

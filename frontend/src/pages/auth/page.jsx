@@ -12,13 +12,21 @@ export default function Auth() {
     const { login, signup, authLoading } = authServices()
     const navigate = useNavigate()
 
-    const authData = JSON.parse(localStorage.getItem('auth'))
+    let authData = null
+    try {
+        const stored = localStorage.getItem('auth')
+        authData = stored ? JSON.parse(stored) : null
+    } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        authData = null
+    }
 
     useEffect(() => {
-        if(authData) {
-            return navigate('/profile')
+        if (authData) {
+            navigate('/profile')
         }
-    }, [authData])
+    }, [authData, navigate])
+
 
     const handleChangeFormType = () => {
         setFormData(null)

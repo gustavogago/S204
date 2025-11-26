@@ -11,15 +11,23 @@ export default function Profile() {
     const { logout } = authServices()
     const { getUserOrders, orderLoading, refetchOrders, ordersList } = orderServices()
     const navigate = useNavigate()
-    const authData = JSON.parse(localStorage.getItem('auth'))
+    let authData = null
+    try {
+        const stored = localStorage.getItem('auth')
+        authData = stored ? JSON.parse(stored) : null
+    } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        authData = null
+    }
 
     useEffect(() => {
-        if(!authData) {
-            return navigate('/auth')
-        } else if(refetchOrders) {
+        if (!authData) {
+            navigate('/auth')
+        } else if (refetchOrders) {
             getUserOrders(authData?.user?._id)
         }
-    }, [authData, refetchOrders])
+    }, [authData, refetchOrders, getUserOrders, navigate])
+
 
     if(orderLoading) {
         return( <Loading /> )

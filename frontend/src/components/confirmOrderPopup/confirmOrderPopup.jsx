@@ -6,7 +6,15 @@ import { useNavigate } from "react-router-dom"
 
 export default function ConfirmOrderPopup({ open, onClose, onConfirm }) {
     const [formData, setFormData] = useState(null)
-    const authData = JSON.parse(localStorage.getItem('auth'))
+    let authData = null
+    try {
+        const stored = localStorage.getItem('auth')
+        authData = stored ? JSON.parse(stored) : null
+    } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        authData = null
+    }
+
     const navigate = useNavigate()
 
     const handleConfirm = (e) => {

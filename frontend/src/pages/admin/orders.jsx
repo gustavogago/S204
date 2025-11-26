@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { LuRefreshCw, LuEdit3 } from "react-icons/lu"
+import { LuRefreshCw} from "react-icons/lu"
 import adminOrdersService from "../../services/adminOrders"
 import commonStyles from "./common.module.css"
 import styles from "./orders.module.css"
@@ -139,7 +139,7 @@ export default function AdminOrders() {
                         </label>
 
                         <button type="submit">
-                            <LuEdit3 /> Atualizar pedido
+                            Atualizar pedido
                         </button>
                     </form>
                 ) : (

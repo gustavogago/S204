@@ -6,7 +6,15 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(false)
-    const authData = JSON.parse(localStorage.getItem('auth'))
+    let authData = null
+    try {
+        const stored = localStorage.getItem('auth')
+        authData = stored ? JSON.parse(stored) : null
+        } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        authData = null
+}
+
 
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu)

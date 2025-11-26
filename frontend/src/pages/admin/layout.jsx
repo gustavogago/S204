@@ -17,7 +17,16 @@ const navItems = [
 
 export default function AdminLayout() {
     const navigate = useNavigate()
-    const authData = useMemo(() => JSON.parse(localStorage.getItem('auth')), [])
+    const authData = useMemo(() => {
+    try {
+        const stored = localStorage.getItem('auth')
+        return stored ? JSON.parse(stored) : null
+        } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        return null
+        }
+    }, [])
+
 
     useEffect(() => {
         if (!authData) {

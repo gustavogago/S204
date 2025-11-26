@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { LuPlus, LuTrash2, LuEdit3 } from "react-icons/lu"
+import { LuPlus, LuTrash2} from "react-icons/lu"
 import adminPlatesService from "../../services/adminPlates"
 import commonStyles from "./common.module.css"
 import styles from "./plates.module.css"
@@ -139,7 +139,7 @@ export default function AdminPlates() {
                                             handleSelectPlate(plate)
                                         }}
                                     >
-                                        <LuEdit3 />
+                                        Editar
                                     </button>
                                     <button
                                         className={`${commonStyles.iconButton} ${commonStyles.deleteButton}`}
@@ -210,7 +210,6 @@ export default function AdminPlates() {
                     </label>
                     <div className={styles.formActions}>
                         <button type="submit">
-                            {mode === 'create' ? <LuPlus /> : <LuEdit3 />}
                             {mode === 'create' ? 'Adicionar prato' : 'Atualizar prato'}
                         </button>
                     </div>
