@@ -30,16 +30,33 @@ export default function adminPlatesService() {
             })
     }
 
-    const createPlate = async (payload) => {
+        const createPlate = async (payload, imageFile) => {
         try {
+            const formData = new FormData()
+            formData.append('name', payload.name)
+            formData.append('price', payload.price)
+            formData.append('category', payload.category)
+            formData.append('description', payload.description)
+            formData.append('available', payload.available)
+
+            
+            if (payload.imgUrl) {
+                formData.append('imgUrl', payload.imgUrl)
+            }
+
+            if (imageFile) {
+                formData.append('image', imageFile) 
+            }
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    // NÃO coloca 'Content-Type' aqui, o browser define o boundary
                     'Access-Control-Allow-Origin': '*'
                 },
-                body: JSON.stringify(payload)
+                body: formData
             })
+
             const result = await response.json()
 
             if (!result.success) {
@@ -52,6 +69,7 @@ export default function adminPlatesService() {
             return { success: false, message: error.message }
         }
     }
+
 
     const updatePlate = async (plateId, payload) => {
         try {

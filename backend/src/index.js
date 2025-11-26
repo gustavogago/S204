@@ -7,8 +7,14 @@ import usersRouter from './routes/users.js'
 import platesRouter from './routes/plates.js'
 import ordersRouter from './routes/orders.js'
 import adminRouter from './routes/admin.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 config()
+
 
 async function main () {
     const hostname = 'localhost'
@@ -21,6 +27,9 @@ async function main () {
     
     app.use(express.json())
     app.use(cors())
+    //imagens
+    app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
+
 
     app.get('/', (req, res) => {
         res.send({

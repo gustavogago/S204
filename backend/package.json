@@ -23,6 +23,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
+    "multer": "^2.0.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   }
