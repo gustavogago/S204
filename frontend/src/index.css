@@ -18,6 +18,12 @@ main {
 	min-height: 100vh;
 }
 
+main.fullWidth {
+	max-width: 100%;
+	margin: 0;
+	width: 100%;
+}
+
 button {
 	display: flex;
 	gap: 0.5em;
@@ -25,11 +31,10 @@ button {
 	justify-content: center;
 	width: fit-content;
 	background-color: #004643;
-    color: #faf0ca;
+	color: #faf0ca;
 	border: none;
 	padding: 1em;
 	border-radius: 0.5em;
 	cursor: pointer;
 	font-size: medium;
 }
-

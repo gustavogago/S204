@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(false)
+    const authData = JSON.parse(localStorage.getItem('auth'))
 
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu)
@@ -20,6 +21,9 @@ export default function Navbar() {
                 <div className={styles.navbarLinksContainer}>
                     <Link to={'/'} className={styles.navbarLink}>Home</Link>
                     <Link to={'/plates'} className={styles.navbarLink}>Plates</Link>
+                    {authData?.user?.role === 'admin' ? (
+                        <Link to={'/admin'} className={styles.navbarLink}>Admin</Link>
+                    ) : null}
                     <Link to={'/cart'}>
                         <LuShoppingCart className={styles.navbarLink} />
                     </Link>
@@ -46,6 +50,9 @@ export default function Navbar() {
                 <div className={styles.drawer}>
                     <Link to={'/'} className={styles.navbarLink} onClick={handleOpenMenu}>Home</Link>
                     <Link to={'/plates'} className={styles.navbarLink} onClick={handleOpenMenu}>Plates</Link>
+                    {authData?.user?.role === 'admin' ? (
+                        <Link to={'/admin'} className={styles.navbarLink} onClick={handleOpenMenu}>Admin</Link>
+                    ) : null}
                     <Link to={'/profile'} className={styles.navbarLink} onClick={handleOpenMenu}>Profile</Link>
                 </div>
             </Drawer>
