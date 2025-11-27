@@ -1,0 +1,21 @@
+.actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.refreshButton {
+    background: #004643;
+    color: #faf0ca;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.65rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.emptyState {
+    padding: 1rem 0;
+    color: #6c584c;
+}

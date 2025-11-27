@@ -1,0 +1,47 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.previewGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.previewCard {
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.previewCard h3 {
+    font-size: 1.25rem;
+}
+
+.previewList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.previewItem {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+.seeMore {
+    color: #004643;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}

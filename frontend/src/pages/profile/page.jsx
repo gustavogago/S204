@@ -11,15 +11,23 @@ export default function Profile() {
     const { logout } = authServices()
     const { getUserOrders, orderLoading, refetchOrders, ordersList } = orderServices()
     const navigate = useNavigate()
-    const authData = JSON.parse(localStorage.getItem('auth'))
+    let authData = null
+    try {
+        const stored = localStorage.getItem('auth')
+        authData = stored ? JSON.parse(stored) : null
+    } catch (e) {
+        console.error('Erro ao ler auth do localStorage:', e)
+        authData = null
+    }
 
     useEffect(() => {
-        if(!authData) {
-            return navigate('/auth')
-        } else if(refetchOrders) {
+        if (!authData) {
+            navigate('/auth')
+        } else if (refetchOrders) {
             getUserOrders(authData?.user?._id)
         }
-    }, [authData, refetchOrders])
+    }, [authData, refetchOrders, getUserOrders, navigate])
+
 
     if(orderLoading) {
         return( <Loading /> )
@@ -49,12 +57,15 @@ export default function Profile() {
                             {order.pickupStatus === 'Completed' ? <p className={`${styles.pickupStatus} ${styles.completed}`}><LuCheckCircle />{order.pickupStatus}</p> : null}
                             {order.pickupStatus === 'Canceled' ? <p className={`${styles.pickupStatus} ${styles.canceled}`}><LuAlertCircle />{order.pickupStatus}</p> : null}
                             <h3>{order.pickupTime}</h3>
-                            {order.orderItems.map((item)=> (
-                                <div key={item._id}>
-                                    <h4>{item.itemDetails[0].name}</h4>
-                                    <p>Quantity: {item.quantity}</p>
-                                </div>
-                            ))}
+                            {order.orderItems?.map((item)=> {
+                                const itemName = item?.itemDetails?.[0]?.name || 'Item indisponivel'
+                                return (
+                                    <div key={item._id}>
+                                        <h4>{itemName}</h4>
+                                        <p>Quantity: {item.quantity}</p>
+                                    </div>
+                                )
+                            })}
                         </div>
                     ))}
                 </div>

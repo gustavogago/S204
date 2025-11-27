@@ -1,0 +1,34 @@
+.actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.addButton {
+    background: #0a6f6b;
+    color: #faf0ca;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.65rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.formActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.emptyState {
+    padding: 1rem 0;
+    color: #6c584c;
+}
+
+.plateThumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+}

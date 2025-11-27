@@ -47,7 +47,8 @@ export default class OrdersDataAccess {
                     userDetails: { $first: '$userDetails' },
                     orderItems: { $push: '$orderItems' },
                     pickupStatus: { $first: '$pickupStatus' },
-                    pickupTime: { $first: '$pickupTime' }
+                    pickupTime: { $first: '$pickupTime' },
+                    createdAt: { $first: '$createdAt' }
                 }
             }
         ])
@@ -102,7 +103,8 @@ export default class OrdersDataAccess {
                     userDetails: { $first: '$userDetails' },
                     orderItems: { $push: '$orderItems' },
                     pickupStatus: { $first: '$pickupStatus' },
-                    pickupTime: { $first: '$pickupTime' }
+                    pickupTime: { $first: '$pickupTime' },
+                    createdAt: { $first: '$createdAt' }
                 }
             }
         ])

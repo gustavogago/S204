@@ -9,6 +9,11 @@ import Cart from './pages/cart/page.jsx'
 import Profile from './pages/profile/page.jsx'
 import Plates from './pages/plates/page.jsx'
 import Auth from './pages/auth/page.jsx'
+import AdminLayout from './pages/admin/layout.jsx'
+import AdminHome from './pages/admin/home.jsx'
+import AdminOrders from './pages/admin/orders.jsx'
+import AdminPlates from './pages/admin/plates.jsx'
+import AdminUsers from './pages/admin/users.jsx'
 
 const pages = createBrowserRouter([
     {
@@ -20,6 +25,16 @@ const pages = createBrowserRouter([
             { path: '/profile', element: <Profile /> },
             { path: '/plates', element: <Plates /> },
             { path: '/auth', element: <Auth /> },
+            {
+                path: '/admin',
+                element: <AdminLayout />,
+                children: [
+                    { index: true, element: <AdminHome /> },
+                    { path: 'orders', element: <AdminOrders /> },
+                    { path: 'plates', element: <AdminPlates /> },
+                    { path: 'users', element: <AdminUsers /> },
+                ]
+            },
         ]
     }
 ])

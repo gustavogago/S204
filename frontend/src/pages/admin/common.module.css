@@ -1,0 +1,149 @@
+.section {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.tableWrapper {
+    flex: 1;
+    min-width: 360px;
+    background: #fdf4d3;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.tableHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+tbody tr {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: rgba(0, 70, 67, 0.08);
+}
+
+.selectedRow {
+    background: rgba(0, 70, 67, 0.15);
+}
+
+.statusBadge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.pending {
+    background: #fff3cd;
+    color: #7a6000;
+}
+
+.completed {
+    background: #d1f8cf;
+    color: #1f6b1b;
+}
+
+.canceled {
+    background: #ffd1d1;
+    color: #8e1b1b;
+}
+
+.notpickedup {
+    background: #ffd9b3;
+    color: #8c3a00;
+}
+
+.formPanel {
+    width: 320px;
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+}
+
+.form input,
+.form select,
+.form textarea {
+    border: 1px solid #d8c99b;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    background: #faf0ca;
+    font-size: 1rem;
+}
+
+.form textarea {
+    resize: none;
+}
+
+.checkboxField {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.iconButton {
+    background: #004643;
+    color: #faf0ca;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.deleteButton {
+    background: #b0413e;
+}
+
+.platePreview {
+    width: 80px;
+    height: 60px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.feedback {
+    background: #fff3cd;
+    color: #3e2a00;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+}
