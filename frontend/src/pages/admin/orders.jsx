@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
-import { LuRefreshCw} from "react-icons/lu"
+import { LuRefreshCw } from "react-icons/lu"
 import adminOrdersService from "../../services/adminOrders"
 import commonStyles from "./common.module.css"
 import styles from "./orders.module.css"
 
-const ORDER_STATUS = ['Pending', 'Completed', 'Canceled', 'Not picked up']
+const ORDER_STATUS = [
+    { value: 'Pending', label: 'Pendente' },
+    { value: 'Completed', label: 'Concluido' },
+    { value: 'Canceled', label: 'Cancelado' },
+    { value: 'Not picked up', label: 'Nao retirado' },
+]
 
 export default function AdminOrders() {
     const { orders, ordersLoading, fetchOrders, updateOrder } = adminOrdersService()
@@ -79,7 +84,7 @@ export default function AdminOrders() {
                         <tr>
                             <th>Status</th>
                             <th>Data</th>
-                            <th>Horário</th>
+                            <th>Horario</th>
                             <th>Cliente</th>
                             <th>Itens</th>
                         </tr>
@@ -95,7 +100,7 @@ export default function AdminOrders() {
                                 >
                                     <td>
                                         <span className={`${commonStyles.statusBadge} ${commonStyles[order.pickupStatus?.toLowerCase()?.replace(/\s/g, '') || 'pending']}`}>
-                                            {order.pickupStatus}
+                                            {ORDER_STATUS.find((s) => s.value === order.pickupStatus)?.label || order.pickupStatus}
                                         </span>
                                     </td>
                                     <td>{formatDate(order.createdAt)}</td>
@@ -122,13 +127,13 @@ export default function AdminOrders() {
                             Status
                             <select name="pickupStatus" value={orderForm.pickupStatus} onChange={handleFormChange}>
                                 {ORDER_STATUS.map((status) => (
-                                    <option key={status} value={status}>{status}</option>
+                                    <option key={status.value} value={status.value}>{status.label}</option>
                                 ))}
                             </select>
                         </label>
 
                         <label>
-                            Horário de retirada
+                            Horario de retirada
                             <input
                                 type="time"
                                 name="pickupTime"
@@ -149,5 +154,3 @@ export default function AdminOrders() {
         </div>
     )
 }
-
-

@@ -6,16 +6,16 @@ export default function Footer() {
         <footer className={styles.footerContainer}>
             <img src="/imgs/logo.png" alt="" />
             <div>
-                <h2>Important Links</h2>
+                <h2>Links importantes</h2>
                 <div className={styles.linksContainer}>
-                    <Link className={styles.link} to={'/'}>Homepage</Link>
-                    <Link className={styles.link} to={'/plates'}>Plates</Link>
-                    <Link className={styles.link} to={'/profile'}>Profile</Link>
+                    <Link className={styles.link} to={'/'}>Início</Link>
+                    <Link className={styles.link} to={'/plates'}>Pratos</Link>
+                    <Link className={styles.link} to={'/profile'}>Perfil</Link>
                 </div>
             </div>
             <div>
-                Developed by Eduardo Pazitto.
-                <a href="https://www.linkedin.com/in/eduardopazitto" target='_blank' className={styles.link}>See my projects!</a>
+                Desenvolvido por Eduardo Pazitto.
+                <a href="https://www.linkedin.com/in/eduardopazitto" target='_blank' className={styles.link}>Veja meus projetos!</a>
             </div>
         </footer>
     )

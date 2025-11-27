@@ -9,10 +9,10 @@ import {
 import styles from "./layout.module.css"
 
 const navItems = [
-    { to: '/admin/orders', label: 'Orders', icon: <LuClipboardList /> },
-    { to: '/admin/plates', label: 'Plates', icon: <LuUtensils /> },
-    { to: '/admin/users', label: 'Users', icon: <LuUsers /> },
-    { to: '/profile', label: 'Profile', icon: <LuUserCog /> },
+    { to: '/admin/orders', label: 'Pedidos', icon: <LuClipboardList /> },
+    { to: '/admin/plates', label: 'Pratos', icon: <LuUtensils /> },
+    { to: '/admin/users', label: 'Usuarios', icon: <LuUsers /> },
+    { to: '/profile', label: 'Perfil', icon: <LuUserCog /> },
 ]
 
 export default function AdminLayout() {
@@ -60,7 +60,7 @@ export default function AdminLayout() {
             <section className={styles.content}>
                 <header className={styles.header}>
                     <div>
-                        <p>Olá, {authData?.user?.fullname || 'admin'}!</p>
+                        <p>Ola, {authData?.user?.fullname || 'admin'}!</p>
                         <h1>Painel Administrativo</h1>
                     </div>
                 </header>
