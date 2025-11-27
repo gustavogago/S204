@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const url = 'http://localhost:3000/admin/users'
+const url = 'https://s204mgbackend.azurewebsites.net/admin/users'
 
 export default function adminUsersService() {
     const [users, setUsers] = useState([])

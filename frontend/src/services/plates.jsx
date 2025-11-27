@@ -5,7 +5,7 @@ export default function platesServices() {
     const [refetchPlates, setRefetchPlates] = useState(true)
     const [platesList, setPlatesList] = useState([])
 
-    const url = 'http://localhost:3000/plates'
+    const url = 'https://s204mgbackend.azurewebsites.net/plates'
 
     const getAvailablePlates = (userId) => {
         setPlatesLoading(true)
@@ -20,7 +20,11 @@ export default function platesServices() {
         .then((response) => response.json())
         .then((result) => {
             if(result.success) {
-                setPlatesList(result.body)
+                const sanitized = (result.body || []).map((plate) => ({
+                    ...plate,
+                    imgUrl: plate.imgUrl?.replace('http://localhost:3000', 'https://s204mgbackend.azurewebsites.net')
+                }))
+                setPlatesList(sanitized)
             } else {
                 console.log(result)
             }

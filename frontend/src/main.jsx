@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
 import Home from './pages/home/page.jsx'
 import Cart from './pages/cart/page.jsx'
@@ -15,7 +15,7 @@ import AdminOrders from './pages/admin/orders.jsx'
 import AdminPlates from './pages/admin/plates.jsx'
 import AdminUsers from './pages/admin/users.jsx'
 
-const pages = createBrowserRouter([
+const pages = createHashRouter([
     {
         path: '/',
         element: <App />,

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const url = 'http://localhost:3000/admin/plates'
+const url = 'https://s204mgbackend.azurewebsites.net/admin/plates'
 
 export default function adminPlatesService() {
     const [plates, setPlates] = useState([])
@@ -19,7 +19,11 @@ export default function adminPlatesService() {
             .then((response) => response.json())
             .then((result) => {
                 if (result.success) {
-                    setPlates(result.body || [])
+                    const sanitized = (result.body || []).map((plate) => ({
+                        ...plate,
+                        imgUrl: plate.imgUrl?.replace('http://localhost:3000', 'https://s204mgbackend.azurewebsites.net')
+                    }))
+                    setPlates(sanitized)
                 }
             })
             .catch((error) => {

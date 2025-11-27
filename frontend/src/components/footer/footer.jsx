@@ -13,10 +13,6 @@ export default function Footer() {
                     <Link className={styles.link} to={'/profile'}>Perfil</Link>
                 </div>
             </div>
-            <div>
-                Desenvolvido por Eduardo Pazitto.
-                <a href="https://www.linkedin.com/in/eduardopazitto" target='_blank' className={styles.link}>Veja meus projetos!</a>
-            </div>
         </footer>
     )
 }
