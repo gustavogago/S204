@@ -17,8 +17,8 @@ config()
 
 
 async function main () {
-    const hostname = 'localhost'
-    const port = 3000
+    const hostname = process.env.HOST || '0.0.0.0'
+    const port = process.env.PORT || 3000
 
     const app = express()
 
@@ -46,8 +46,8 @@ async function main () {
     app.use('/orders', ordersRouter)
     app.use('/admin', adminRouter)
     
-    app.listen(port, () => {
-        console.log(`Server running on: http://${hostname}:${port}`)
+    app.listen(port, hostname, () => {
+        console.log(`Server running on: ${hostname}:${port}`)
     })
 }
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function authServices() {
     const [authLoading, setAuthLoading] = useState(false)
 
-    const url = 'https://s204mgbackend.azurewebsites.net/admin/auth'
+    const url = 'https://s204mgbackend.azurewebsites.net/auth'
 
     const login = (formData) => {
         setAuthLoading(true)
