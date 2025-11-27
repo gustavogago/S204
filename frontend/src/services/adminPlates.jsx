@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const url = 'http://localhost:3000/admin/plates'
+const url = 'https://s204mgbackend.azurewebsites.net/admin/plates'
 
 export default function adminPlatesService() {
     const [plates, setPlates] = useState([])

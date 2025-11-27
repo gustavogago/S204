@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const url = 'http://localhost:3000/admin/orders'
+const url = 'https://s204mgbackend.azurewebsites.net/admin/orders'
 
 export default function adminOrdersService() {
     const [orders, setOrders] = useState([])
