@@ -8,50 +8,50 @@ export default function Home() {
     return (
         <div className={styles.pageContainer}>
             <section>
-                <h1>Welcome to My Gastronomy.</h1>
+                <h1>Bem-vindo ao My Gastronomy.</h1>
                 <p>
-                    Hello and welcome to our special culinary corner, 
-                    where Italian tradition dances with modern creativity 
-                    to give you a unique culinary experience. 
-                    With us, every dish is a taste hug, 
-                    conceived with love and dedication to make 
-                    each of your days unforgettable.
+                    Olá e bem-vindo ao nosso canto culinário especial,
+                    onde a tradição italiana dança com a criatividade moderna
+                    para te entregar uma experiência gastronômica única.
+                    Aqui, cada prato é um abraço de sabor,
+                    pensado com amor e dedicação para tornar
+                    cada dia seu mais especial.
                 </p>
             </section>
 
             <section className={styles.foodSection}>
                 <div>
                     <i><NaturalFood /></i>
-                    <h4>Excellence in Everyday Life</h4>
+                    <h4>Excelência no dia a dia</h4>
                     <p>
-                        Discover our daily selection of unique dishes to add 
-                        a fresh and refined touch to your table.
+                        Conheça nossa seleção diária de pratos únicos para levar
+                        um toque fresco e refinado à sua mesa.
                     </p>
                 </div>
                 <div>
                     <i><Vegetable /></i>
-                    <h4>First Choice Ingredients</h4>
-                    <p>We carefully select exceptional ingredients to ensure the highest quality in your favorite dishes.</p>
+                    <h4>Ingredientes de primeira</h4>
+                    <p>Selecionamos ingredientes excepcionais para garantir a máxima qualidade nos seus pratos favoritos.</p>
                 </div>
                 <div>
                     <i><Dessert /></i>
-                    <h4>Taste for Everyone</h4>
-                    <p>Explore a world of flavors with our comprehensive offering, designed to satisfy the palates of the whole family, from appetizers to desserts.</p>
+                    <h4>Sabor para todos</h4>
+                    <p>Explore um mundo de sabores com nosso cardápio completo, feito para agradar toda a família, das entradas às sobremesas.</p>
                 </div>
             </section>
 
             <section className={styles.contactSection}>
-                <h1>Stay Updated!</h1>
+                <h1>Fique por dentro!</h1>
                 <p>
-                    Enter the world of My Gastronomy by following us on social media. 
-                    You'll always be updated on our culinary creations, special events, 
-                    and gourmet surprises. Don't miss out on a single bite!
+                    Entre no mundo My Gastronomy nos seguindo nas redes.
+                    Você vai acompanhar nossas criações, eventos especiais
+                    e surpresas gourmet. Não perca nenhum sabor!
                 </p>
                 <div className={styles.socialButtonsContainer}>
                     <button className={styles.socialButton}><FaInstagram /> Instagram</button>
                     <button className={styles.socialButton}><FaFacebookSquare /> Facebook</button>
                     <button className={styles.socialButton}><FaWhatsapp /> Whatsapp</button>
-                    <button className={styles.socialButton}><FaMapMarkerAlt />Location</button>
+                    <button className={styles.socialButton}><FaMapMarkerAlt />Localização</button>
                 </div>
             </section>
         </div>

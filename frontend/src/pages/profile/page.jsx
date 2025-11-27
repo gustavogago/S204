@@ -47,22 +47,22 @@ export default function Profile() {
                 <h3>{authData?.user?.email}</h3>
             </div>
 
-            <button onClick={handleLogout}>Logout<LuLogOut /></button>
+            <button onClick={handleLogout}>Sair<LuLogOut /></button>
 
             {ordersList.length > 0 ? 
                 <div className={styles.ordersContainer}>
                     {ordersList.map((order) => (
                         <div key={order._id} className={styles.orderContainer}>
-                            {order.pickupStatus === 'Pending' ? <p className={`${styles.pickupStatus} ${styles.pending}`}><LuTimer />{order.pickupStatus}</p> : null}
-                            {order.pickupStatus === 'Completed' ? <p className={`${styles.pickupStatus} ${styles.completed}`}><LuCheckCircle />{order.pickupStatus}</p> : null}
-                            {order.pickupStatus === 'Canceled' ? <p className={`${styles.pickupStatus} ${styles.canceled}`}><LuAlertCircle />{order.pickupStatus}</p> : null}
+                            {order.pickupStatus === 'Pending' ? <p className={`${styles.pickupStatus} ${styles.pending}`}><LuTimer />Pendente</p> : null}
+                            {order.pickupStatus === 'Completed' ? <p className={`${styles.pickupStatus} ${styles.completed}`}><LuCheckCircle />Concluído</p> : null}
+                            {order.pickupStatus === 'Canceled' ? <p className={`${styles.pickupStatus} ${styles.canceled}`}><LuAlertCircle />Cancelado</p> : null}
                             <h3>{order.pickupTime}</h3>
                             {order.orderItems?.map((item)=> {
                                 const itemName = item?.itemDetails?.[0]?.name || 'Item indisponivel'
                                 return (
                                     <div key={item._id}>
                                         <h4>{itemName}</h4>
-                                        <p>Quantity: {item.quantity}</p>
+                                        <p>Quantidade: {item.quantity}</p>
                                     </div>
                                 )
                             })}
@@ -71,8 +71,8 @@ export default function Profile() {
                 </div>
             : 
                 <div>
-                    You do not have orders yet.
-                    <Link to={'/plates'} className={styles.platesLink}>Click here and see our specialities!</Link>
+                    Você ainda não tem pedidos.
+                    <Link to={'/plates'} className={styles.platesLink}>Clique aqui e veja nossas especialidades!</Link>
                 </div>
             }
         </div>

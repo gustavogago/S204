@@ -27,8 +27,8 @@ export default function Navbar() {
                     <img className={styles.logo} src="/imgs/logo.png" alt="" />
                 </Link>
                 <div className={styles.navbarLinksContainer}>
-                    <Link to={'/'} className={styles.navbarLink}>Home</Link>
-                    <Link to={'/plates'} className={styles.navbarLink}>Plates</Link>
+                    <Link to={'/'} className={styles.navbarLink}>Início</Link>
+                    <Link to={'/plates'} className={styles.navbarLink}>Pratos</Link>
                     {authData?.user?.role === 'admin' ? (
                         <Link to={'/admin'} className={styles.navbarLink}>Admin</Link>
                     ) : null}
@@ -56,12 +56,12 @@ export default function Navbar() {
             onClose={handleOpenMenu}
             >
                 <div className={styles.drawer}>
-                    <Link to={'/'} className={styles.navbarLink} onClick={handleOpenMenu}>Home</Link>
-                    <Link to={'/plates'} className={styles.navbarLink} onClick={handleOpenMenu}>Plates</Link>
+                    <Link to={'/'} className={styles.navbarLink} onClick={handleOpenMenu}>Início</Link>
+                    <Link to={'/plates'} className={styles.navbarLink} onClick={handleOpenMenu}>Pratos</Link>
                     {authData?.user?.role === 'admin' ? (
                         <Link to={'/admin'} className={styles.navbarLink} onClick={handleOpenMenu}>Admin</Link>
                     ) : null}
-                    <Link to={'/profile'} className={styles.navbarLink} onClick={handleOpenMenu}>Profile</Link>
+                    <Link to={'/profile'} className={styles.navbarLink} onClick={handleOpenMenu}>Perfil</Link>
                 </div>
             </Drawer>
 

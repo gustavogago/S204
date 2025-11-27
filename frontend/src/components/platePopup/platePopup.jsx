@@ -12,7 +12,7 @@ export default function PlatePopup({ plateData, onClose, onAddToCart }) {
                     <p className={styles.categoryBadge}>{plateData.category || 'Categoria indisponivel'}</p>
                     <p>{plateData.description}</p>
                     <h2>$ {plateData.price}</h2>
-                    <button onClick={() => { onAddToCart(plateData) }}>Add to cart</button>
+                    <button onClick={() => { onAddToCart(plateData) }}>Adicionar ao carrinho</button>
                 </div>
             </div>
         </Dialog>

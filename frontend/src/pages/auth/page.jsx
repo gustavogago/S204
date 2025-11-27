@@ -53,7 +53,7 @@ export default function Auth() {
                 break
             case 'signup':
                 if(formData.password !== formData.confirmPassword) {
-                    console.log('Passwords do not match')
+                    console.log('As senhas não coincidem')
                     return
                 }
                 signup(formData)
@@ -62,15 +62,15 @@ export default function Auth() {
     }
 
     if(authLoading) {
-        return ( <h1>Loading...</h1> )
+        return ( <h1>Carregando...</h1> )
     }
 
     return (
         <div className={styles.authPageContainer}>
             {formType === 'login' ? (
                 <>
-                    <h1>Login</h1>
-                    <button onClick={handleChangeFormType}>Don't you have an account? Click here</button>
+                    <h1>Entrar</h1>
+                    <button onClick={handleChangeFormType}>Não tem conta? Clique aqui</button>
                     <form onSubmit={handleSubmitForm}>
                         <TextField 
                         required
@@ -81,24 +81,24 @@ export default function Auth() {
                         />
                         <TextField 
                         required
-                        label="Password"
+                        label="Senha"
                         type="password"
                         name="password"
                         onChange={handleFormDataChange}
                         />
-                        <button type="submit">Login<LuLogIn /></button>
+                        <button type="submit">Entrar<LuLogIn /></button>
                     </form>
                 </>
             ) : null}
 
             {formType === 'signup' ? (
                 <>
-                    <h1>Signup</h1>
-                    <button onClick={handleChangeFormType}>Already have an account? Click here</button>
+                    <h1>Criar conta</h1>
+                    <button onClick={handleChangeFormType}>Já tem conta? Clique aqui</button>
                     <form onSubmit={handleSubmitForm}>
                         <TextField 
                         required
-                        label="Fullname"
+                        label="Nome completo"
                         type="fullname"
                         name="fullname"
                         onChange={handleFormDataChange}
@@ -112,19 +112,19 @@ export default function Auth() {
                         />
                         <TextField 
                         required
-                        label="Password"
+                        label="Senha"
                         type="password"
                         name="password"
                         onChange={handleFormDataChange}
                         />
                         <TextField 
                         required
-                        label="Confirm password"
+                        label="Confirmar senha"
                         type="password"
                         name="confirmPassword"
                         onChange={handleFormDataChange}
                         />
-                        <button type="submit">Signup<LuLogIn /></button>
+                        <button type="submit">Cadastrar<LuLogIn /></button>
                     </form>
                 </>
             ) : null}

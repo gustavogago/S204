@@ -7,6 +7,21 @@ import adminUsersService from "../../services/adminUsers"
 import layoutStyles from "./layout.module.css"
 import styles from "./home.module.css"
 
+const statusLabel = (status) => {
+    switch (status) {
+        case 'Completed':
+            return 'Concluido'
+        case 'Canceled':
+            return 'Cancelado'
+        case 'Pending':
+            return 'Pendente'
+        case 'Not picked up':
+            return 'Nao retirado'
+        default:
+            return status
+    }
+}
+
 export default function AdminHome() {
     const { orders, fetchOrders } = adminOrdersService()
     const { plates, fetchPlates } = adminPlatesService()
@@ -21,7 +36,7 @@ export default function AdminHome() {
     const summaryCards = [
         { label: 'Pedidos', value: orders.length, to: '/admin/orders', icon: <LuClipboardList /> },
         { label: 'Pratos', value: plates.length, to: '/admin/plates', icon: <LuUtensils /> },
-        { label: 'Usuários', value: users.length, to: '/admin/users', icon: <LuUsers /> },
+        { label: 'Usuarios', value: users.length, to: '/admin/users', icon: <LuUsers /> },
     ]
 
     const latestOrders = orders.slice(0, 5)
@@ -44,14 +59,14 @@ export default function AdminHome() {
 
             <div className={styles.previewGrid}>
                 <div className={styles.previewCard}>
-                    <h3>Últimos pedidos</h3>
+                    <h3>Ultimos pedidos</h3>
                     <ul className={styles.previewList}>
                         {latestOrders.map((order) => {
                             const customer = order.userDetails?.[0]
                             return (
                                 <li key={order._id} className={styles.previewItem}>
                                     <span>{customer?.fullname || customer?.email}</span>
-                                    <span>{order.pickupStatus}</span>
+                                    <span>{statusLabel(order.pickupStatus)}</span>
                                 </li>
                             )
                         })}
@@ -77,21 +92,20 @@ export default function AdminHome() {
                 </div>
 
                 <div className={styles.previewCard}>
-                    <h3>Novos usuários</h3>
+                    <h3>Novos usuarios</h3>
                     <ul className={styles.previewList}>
                         {latestUsers.map((user) => (
                             <li key={user._id} className={styles.previewItem}>
                                 <span>{user.fullname}</span>
-                                <span>{user.role || 'user'}</span>
+                                <span>{user.role || 'usuario'}</span>
                             </li>
                         ))}
                     </ul>
                     <Link to="/admin/users" className={styles.seeMore}>
-                        Gerenciar usuários <LuArrowRight />
+                        Gerenciar usuarios <LuArrowRight />
                     </Link>
                 </div>
             </div>
         </div>
     )
 }
-
