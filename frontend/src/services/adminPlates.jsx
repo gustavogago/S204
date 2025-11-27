@@ -30,7 +30,7 @@ export default function adminPlatesService() {
             })
     }
 
-        const createPlate = async (payload, imageFile) => {
+    const createPlate = async (payload, imageFile) => {
         try {
             const formData = new FormData()
             formData.append('name', payload.name)
@@ -39,19 +39,18 @@ export default function adminPlatesService() {
             formData.append('description', payload.description)
             formData.append('available', payload.available)
 
-            
             if (payload.imgUrl) {
                 formData.append('imgUrl', payload.imgUrl)
             }
 
             if (imageFile) {
-                formData.append('image', imageFile) 
+                formData.append('image', imageFile)
             }
 
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    // NÃO coloca 'Content-Type' aqui, o browser define o boundary
+                    // Nao coloca Content-Type aqui; o browser define o boundary
                     'Access-Control-Allow-Origin': '*'
                 },
                 body: formData
@@ -60,7 +59,7 @@ export default function adminPlatesService() {
             const result = await response.json()
 
             if (!result.success) {
-                throw new Error(result.body?.text || 'Não foi possível criar o prato.')
+                throw new Error(result.body?.text || 'Nao foi possivel criar o prato.')
             }
 
             fetchPlates()
@@ -70,30 +69,39 @@ export default function adminPlatesService() {
         }
     }
 
-
-    const updatePlate = async (plateId, payload) => {
+    const updatePlate = async (plateId, payload, imageFile) => {
         try {
+            const formData = new FormData()
+            formData.append('name', payload.name)
+            formData.append('price', payload.price)
+            formData.append('category', payload.category)
+            formData.append('description', payload.description)
+            formData.append('available', payload.available)
+
+            if (payload.imgUrl) {
+                formData.append('imgUrl', payload.imgUrl)
+            }
+
+            if (imageFile) {
+                formData.append('image', imageFile)
+            }
+
             const response = await fetch(`${url}/${plateId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
+                    // multipart: deixe o browser definir o boundary
                     'Access-Control-Allow-Origin': '*'
                 },
-                body: JSON.stringify(payload)
+                body: formData
             })
             const result = await response.json()
 
             if (!result.success) {
-                throw new Error(result.body?.text || 'Não foi possível atualizar o prato.')
+                throw new Error(result.body?.text || 'Nao foi possivel atualizar o prato.')
             }
 
-            setPlates((prev) =>
-                prev.map((plate) =>
-                    plate._id === plateId
-                        ? { ...plate, ...payload }
-                        : plate
-                )
-            )
+            // recarrega para refletir imagem nova e demais campos
+            fetchPlates()
 
             return { success: true }
         } catch (error) {
@@ -113,7 +121,7 @@ export default function adminPlatesService() {
             const result = await response.json()
 
             if (!result.success) {
-                throw new Error(result.body?.text || 'Não foi possível remover o prato.')
+                throw new Error(result.body?.text || 'Nao foi possivel remover o prato.')
             }
 
             setPlates((prev) => prev.filter((plate) => plate._id !== plateId))
@@ -125,5 +133,3 @@ export default function adminPlatesService() {
 
     return { plates, platesLoading, fetchPlates, createPlate, updatePlate, deletePlate }
 }
-
-

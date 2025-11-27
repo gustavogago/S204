@@ -74,8 +74,29 @@ adminRouter.post('/plates', upload.single('image'), async (req, res) => {
 })
 
 
-adminRouter.put('/plates/:id', async (req, res) => {
-    const { body, success, statusCode } = await platesControllers.updatePlate(req.params.id, req.body)
+adminRouter.put('/plates/:id', upload.single('image'), async (req, res) => {
+    // converte campos vindos do multipart (são strings)
+    const plateData = {
+        name: req.body.name,
+        description: req.body.description,
+        category: req.body.category,
+        price: req.body.price ? Number(req.body.price) : 0,
+        available: req.body.available === 'true' || req.body.available === true,
+    }
+
+    // se vier URL manual, mantém
+    if (req.body.imgUrl) {
+        plateData.imgUrl = req.body.imgUrl
+    }
+
+    // se veio arquivo novo, sobrescreve a imagem do prato
+    if (req.file) {
+        const protocol = req.protocol
+        const host = req.get('host')
+        plateData.imgUrl = `${protocol}://${host}/uploads/plates/${req.file.filename}`
+    }
+
+    const { body, success, statusCode } = await platesControllers.updatePlate(req.params.id, plateData)
     res.status(statusCode).send({ body, success, statusCode })
 })
 

@@ -4,10 +4,12 @@ import adminPlatesService from "../../services/adminPlates"
 import commonStyles from "./common.module.css"
 import styles from "./plates.module.css"
 
+const CATEGORY_OPTIONS = ["Entrada", "Prato Principal", "Sobremesa"]
+
 const defaultPlateForm = {
   name: "",
   price: "",
-  category: "",
+  category: CATEGORY_OPTIONS[0],
   description: "",
   imgUrl: "",
   available: true,
@@ -39,7 +41,7 @@ export default function AdminPlates() {
     setPlateForm({
       name: plate.name || "",
       price: plate.price || "",
-      category: plate.category || "",
+      category: plate.category || CATEGORY_OPTIONS[0],
       description: plate.description || "",
       imgUrl: plate.imgUrl || "",
       available: plate.available ?? true,
@@ -76,8 +78,7 @@ export default function AdminPlates() {
     if (mode === "create") {
       result = await createPlate(payload, imageFile)
     } else if (selectedPlate?._id) {
-      // por enquanto, não vamos tratar troca de imagem no update
-      result = await updatePlate(selectedPlate._id, payload)
+      result = await updatePlate(selectedPlate._id, payload, imageFile)
     }
 
     if (result?.success) {
@@ -86,9 +87,9 @@ export default function AdminPlates() {
           ? "Prato criado com sucesso!"
           : "Prato atualizado com sucesso!"
       )
+      setImageFile(null)
       if (mode === "create") {
         setPlateForm(defaultPlateForm)
-        setImageFile(null)
       }
     } else {
       setFeedback(result?.message || "Erro ao salvar prato.")
@@ -149,9 +150,9 @@ export default function AdminPlates() {
               <th>Imagem</th>
               <th>Nome</th>
               <th>Categoria</th>
-              <th>Preço</th>
-              <th>Disponível</th>
-              <th>Ações</th>
+              <th>Preco</th>
+              <th>Disponivel</th>
+              <th>Acoes</th>
             </tr>
           </thead>
           <tbody>
@@ -179,14 +180,14 @@ export default function AdminPlates() {
                 <td>{plate.name}</td>
                 <td>{plate.category}</td>
                 <td>R$ {Number(plate.price).toFixed(2)}</td>
-                <td>{plate.available ? "Sim" : "Não"}</td>
+                <td>{plate.available ? "Sim" : "Nao"}</td>
                 <td>
                   <button
                     className={commonStyles.iconButton}
                     type="button"
                     onClick={(e) => {
-                      e.stopPropagation()
-                      handleSelectPlate(plate)
+                        e.stopPropagation()
+                        handleSelectPlate(plate)
                     }}
                   >
                     Editar
@@ -212,7 +213,7 @@ export default function AdminPlates() {
         ) : null}
       </div>
 
-      {/* FORMULÁRIO */}
+      {/* FORMULARIO */}
       <div className={commonStyles.formPanel}>
         <h3>{mode === "create" ? "Novo prato" : "Editar prato"}</h3>
         {feedback ? (
@@ -231,7 +232,7 @@ export default function AdminPlates() {
           </label>
 
           <label>
-            Preço
+            Preco
             <input
               type="number"
               step="0.01"
@@ -244,15 +245,21 @@ export default function AdminPlates() {
 
           <label>
             Categoria
-            <input
+            <select
               name="category"
               value={plateForm.category}
               onChange={handleFormChange}
-            />
+            >
+              {CATEGORY_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </label>
 
           <label>
-            Descrição
+            Descricao
             <textarea
               name="description"
               value={plateForm.description}
@@ -262,7 +269,7 @@ export default function AdminPlates() {
           </label>
 
           <label>
-            Disponível
+            Disponivel
             <input
               type="checkbox"
               name="available"

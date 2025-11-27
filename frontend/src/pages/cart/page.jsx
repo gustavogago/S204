@@ -63,7 +63,7 @@ export default function Cart() {
                                 <img src={item.imgUrl} alt="" />
                                 <div className={styles.itemContent}>
                                     <h2>{item.name}</h2>
-                                    <p>[{String(item.ingredients)}]</p>
+                                    <p>[{item.category || 'Categoria indisponivel'}]</p>
                                     <p>{item.description}</p>
                                     <div className={styles.portionContainer}>
                                         <p>Portions:</p>

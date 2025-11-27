@@ -24,3 +24,11 @@
     padding: 1rem 0;
     color: #6c584c;
 }
+
+.plateThumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+}

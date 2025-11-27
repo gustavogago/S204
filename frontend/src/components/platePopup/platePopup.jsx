@@ -9,7 +9,7 @@ export default function PlatePopup({ plateData, onClose, onAddToCart }) {
                 <img src={plateData.imgUrl} alt="" />
                 <div className={styles.popupContent}>
                     <h2>{plateData.name}</h2>
-                    <p className={styles.ingredients}>[{String(plateData.ingredients)}]</p>
+                    <p className={styles.categoryBadge}>{plateData.category || 'Categoria indisponivel'}</p>
                     <p>{plateData.description}</p>
                     <h2>$ {plateData.price}</h2>
                     <button onClick={() => { onAddToCart(plateData) }}>Add to cart</button>
